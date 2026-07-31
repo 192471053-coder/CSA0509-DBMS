@@ -1,0 +1,95 @@
+LAB EXPERIMENTS
+Experiment 1: DDL Commands using CREATE, ALTER, TRUNCATE and DROP
+Aim
+To study and implement the DDL (Data Definition Language) commands CREATE, ALTER, TRUNCATE, and DROP in MySQL.
+
+Step 1: Create a Database
+CREATE DATABASE University;
+
+Step 2: Select the Database
+USE University;
+
+Step 3: Create a Table (CREATE)
+CREATE TABLE Student (
+    StudentID INT,
+    Name VARCHAR(50),
+    Department VARCHAR(30),
+    Age INT
+);
+
+Step 4: View Table Structure
+DESCRIBE Student;
+
+Step 5: Add a New Column (ALTER ADD)
+ALTER TABLE Student
+ADD Email VARCHAR(50);
+
+Step 6: Modify a Column (ALTER MODIFY)
+ALTER TABLE Student
+MODIFY Name VARCHAR(100);
+
+Step 7: Rename a Column (ALTER RENAME COLUMN)
+ALTER TABLE Student
+RENAME COLUMN Department TO Dept;
+
+Step 8: Drop a Column (ALTER DROP)
+ALTER TABLE Student
+DROP COLUMN Age;
+
+Step 9: Insert Sample Records
+INSERT INTO Student
+VALUES
+(101, 'Arun', 'CSE', 'arun@gmail.com'),
+(102, 'Priya', 'ECE', 'priya@gmail.com');
+
+Step 10: Display Records
+SELECT * FROM Student;
+
+Step 11: Remove All Records (TRUNCATE)
+TRUNCATE TABLE Student;
+
+Step 12: Verify Table is Empty
+SELECT * FROM Student;
+
+Step 13: Delete the Table (DROP)
+DROP TABLE Student;
+
+
+Step 14: Delete the Database 
+DROP DATABASE University;
+ 
+Experiment 2: DDL Commands with Constraints – PRIMARY KEY, FOREIGN KEY, UNIQUE, CHECK, DEFAULT, NOT NULL
+Step 1: Create Database
+CREATE DATABASE CollegeDB;
+Step 2: Use Database
+USE CollegeDB;
+Step 3: Create Parent Table (Department)
+CREATE TABLE Department (
+    DeptID INT PRIMARY KEY,
+    DeptName VARCHAR(30) UNIQUE
+);
+Step 4: Insert Data into Department
+INSERT INTO Department VALUES
+(101, 'CSE'),
+(102, 'ECE'),
+(103, 'MECH');
+Step 5: Create Student Table with Constraints
+CREATE TABLE Student (
+    StudentID INT PRIMARY KEY,
+    Name VARCHAR(50) NOT NULL,
+    Email VARCHAR(50) UNIQUE,
+    Age INT CHECK (Age >= 18),
+    City VARCHAR(30) DEFAULT 'Chennai',
+    DeptID INT,
+    FOREIGN KEY (DeptID) REFERENCES Department(DeptID)
+);
+Step 6: Insert Records
+INSERT INTO Student (StudentID, Name, Email, Age, DeptID)
+VALUES
+(1, 'Arun', 'arun@gmail.com', 20, 101),
+(2, 'Priya', 'priya@gmail.com', 19, 102),
+(3, 'Rahul', 'rahul@gmail.com', 21, 103);
+Step 7: View Records
+SELECT * FROM Student;
+ 
+
